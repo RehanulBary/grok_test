@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: grok-posts-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: WEBHOOK_SECRET
+        generateValue: true
+      - key: FRONTEND_ORIGIN
+        value: "*"
